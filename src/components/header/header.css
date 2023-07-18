@@ -1,0 +1,57 @@
+.header {
+  padding: 0 5rem;
+}
+
+.header_navbar {
+  display: flex;
+  margin: auto;
+  max-width: 1600px;
+}
+
+.header_navbar_icon {
+  margin-right: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_navbar_icon img {
+  width: 108px;
+  height: 23px;
+}
+
+.header_navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.header_navbar ul li {
+  font-size: 13px;
+  cursor: pointer;
+  padding: 16px 8px 10px;
+}
+
+
+.header_navbar_pages {
+  flex: 1;
+}
+
+.header_navbar_user_signin {
+  display: flex;
+  align-items: center;
+}
+
+
+.header_navbar_user li img {
+  width: 32px;
+  margin-left: .5rem;
+}
+
+
+@media screen and (max-width: 1400px) {}
+
+@media screen and (max-width: 1015px) {}
+
+@media screen and (max-width: 860px) {}

@@ -1,12 +1,12 @@
 import './App.css';
 import './index.css';
 
-import { Header } from './components/index';
+import { Navbar } from './components/index';
 
 const App = () => {
   return (
     <div className='App'>
-      <Header />
+      <Navbar />
     </div>
   );
 };

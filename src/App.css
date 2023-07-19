@@ -1,11 +1,16 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
   font-family: var(--font-family);
 }
 
 a {
   text-decoration: none;
   color: unset;
+}
+
+.click-box {
+  border: 2px dotted transparent;
+  cursor: pointer;
 }

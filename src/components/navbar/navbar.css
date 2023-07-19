@@ -10,26 +10,22 @@
   margin-bottom: 2px;
 }
 
-.click-box {
-  font-size: 13px;
-  padding: 16px 8px 10px;
-  cursor: pointer;
-}
-
 .header_navbar_icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px 6px 16px 10px;
+  padding: 16px 6px 12px 10px;
 }
 
-.header_navbar_icon img {
-  margin-right: 8px;
+.nav-btn {
+  font-size: 13px;
+  padding: 16px 8px 10px;
 }
 
 .header_navbar_icon img {
   width: 108px;
   height: 23px;
+  margin: -3px 0 0;
 }
 
 .header_navbar_pages,
@@ -61,22 +57,16 @@
   margin: 8px;
 }
 
-
-
 .header_navbar ul li:hover .underline-hover {
   border-bottom: 2px solid black;
 }
 
 .click-box:focus-within {
-  border: black dotted 2px;
+  border-color: black;
 }
 
 .header_navbar_user_signin {
   padding: 0px;
-}
-
-.cart-btn {
-  margin-right: 5px;
 }
 
 .header_navbar_user li:nth-child(1) span {
@@ -85,16 +75,22 @@
 
 .sub-header {
   background-color: var(--green);
-  padding: 16px;
+  padding: 16px 24px;
 }
 
 .sub-header a {
   display: flex;
-  width: 100%;
-  align-items: center;
   justify-content: center;
-
+  align-items: center;
 }
+
+.sub-header div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 8px 2px 0;
+}
+
 
 .sub-header span {
   font-weight: 500;
@@ -123,6 +119,14 @@
 .header_navbar_mobile div {
   display: flex;
   align-items: center;
+}
+
+.header_navbar_mobile a {
+  padding: 8px;
+}
+
+.header_navbar_mobile .signin-icon {
+  margin: 0;
 }
 
 @media screen and (max-width: 1400px) {

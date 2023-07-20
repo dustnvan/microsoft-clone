@@ -11,6 +11,5 @@ a {
 }
 
 .click-box {
-  border: 2px dotted transparent;
-  cursor: pointer;
+  border: 3px dotted transparent;
 }

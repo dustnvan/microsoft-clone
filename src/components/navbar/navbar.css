@@ -61,7 +61,11 @@
   border-bottom: 2px solid black;
 }
 
-.click-box:focus-within {
+.header .click-box {
+  border: 2px dotted transparent;
+}
+
+.header .click-box:focus-within {
   border-color: black;
 }
 
@@ -76,6 +80,10 @@
 .sub-header {
   background-color: var(--green);
   padding: 16px 24px;
+}
+
+.sub-header .click-box:focus-within {
+  border-color: black;
 }
 
 .sub-header a {

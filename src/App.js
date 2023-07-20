@@ -1,12 +1,13 @@
 import './App.css';
 import './index.css';
 
-import { Navbar } from './components/index';
+import { Navbar, Slideshow } from './components/index';
 
 const App = () => {
   return (
     <div className='App'>
       <Navbar />
+      <Slideshow />
     </div>
   );
 };

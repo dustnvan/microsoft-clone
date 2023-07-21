@@ -6,17 +6,17 @@
   width: 100%;
 }
 
-.text-wrapper {
+.slide-show-content {
   position: absolute;
   display: flex;
   flex-direction: column;
   top: 60px;
   left: 100px;
   padding: 48px;
-  max-width: 500px;
+  max-width: 600px;
 }
 
-.slide-show h2 {
+.text-wrapper h2 {
   background-color: var(--green);
   width: fit-content;
   font-weight: 500;
@@ -25,15 +25,24 @@
   margin-bottom: 8px;
 }
 
-.slide-show h1 {
-  color: #Fff;
+.text-wrapper h1 {
   font-weight: 600;
   font-size: 37px;
   line-height: 44.4px;
   margin-bottom: 20px;
 }
 
-.slide-show p {
+.slide-show1 .text-wrapper h1,
+.slide-show1 .text-wrapper p {
+  color: #Fff;
+}
+
+.slide-show2 .text-wrapper h1,
+.slide-show2 .text-wrapper p {
+  color: #000;
+}
+
+.text-wrapper p {
   color: #Fff;
   margin-bottom: 24px;
 }
@@ -59,7 +68,7 @@
   border-color: #Fff;
 }
 
-.shop-xbox {
+.blue-btn {
   background-color: var(--microsoft-blue);
 }
 
@@ -73,4 +82,32 @@
 
 .chevron-right {
   transition: transform 0.3s ease;
+}
+
+/* Control Panel */
+.control-panel {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+  margin-top: 20px;
+  gap: 30px;
+}
+
+.control-panel>* {}
+
+.control-panel .play-pause {
+  font-size: 1.3rem;
+  cursor: pointer;
+
+}
+
+.control-panel .circle {
+  font-size: .7rem;
+}
+
+.control-panel .chevron {
+  font-size: 1rem;
+  cursor: pointer;
+
 }

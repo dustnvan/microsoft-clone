@@ -104,7 +104,7 @@
   font-weight: 500;
 }
 
-.sub-header span:hover {
+.sub-header div:hover span {
   text-decoration: underline;
 }
 
@@ -113,7 +113,7 @@
   transition: transform 0.3s ease;
 }
 
-.sub-header span:hover+.chevron-right {
+.sub-header div:hover .chevron-right {
   transform: translateX(5px);
 }
 

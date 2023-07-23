@@ -1,9 +1,17 @@
+.slides-container {
+  display: flex;
+  overflow: hidden;
+}
+
 .slide-show {
   position: relative;
 }
 
+
+
 .slide-show img {
-  width: 100%;
+  width: 100vw;
+
 }
 
 .slide-show-content {
@@ -32,6 +40,7 @@
   margin-bottom: 20px;
 }
 
+
 .slide-show1 .text-wrapper h1,
 .slide-show1 .text-wrapper p {
   color: #Fff;
@@ -41,6 +50,7 @@
 .slide-show2 .text-wrapper p {
   color: #000;
 }
+
 
 .text-wrapper p {
   color: #Fff;
@@ -59,9 +69,7 @@
 }
 
 .btns .click-box {
-  border: dotted transparent 3px;
   padding: 5px 8px;
-
 }
 
 .btns .click-box:focus-within {
@@ -71,6 +79,7 @@
 .blue-btn {
   background-color: var(--microsoft-blue);
 }
+
 
 .shop-pc:hover .chevron-right {
   transform: translateX(5px);
@@ -84,30 +93,77 @@
   transition: transform 0.3s ease;
 }
 
+
 /* Control Panel */
 .control-panel {
   display: flex;
   justify-content: center;
 
   align-items: center;
-  margin-top: 20px;
-  gap: 30px;
+  margin-top: 10px;
 }
 
-.control-panel>* {}
+.control-panel div {
+  padding: 10px 15px;
 
-.control-panel .play-pause {
-  font-size: 1.3rem;
+}
+
+.play-pause-container {
+  font-size: 1.2rem;
   cursor: pointer;
 
 }
 
-.control-panel .circle {
-  font-size: .7rem;
+.circle-container {
+  font-size: .6rem;
 }
 
-.control-panel .chevron {
+.chevron-container {
   font-size: 1rem;
   cursor: pointer;
+}
 
+.chevron-container:hover .control-chevron-right {
+  transform: translateX(5px);
+}
+
+.chevron-container:hover .control-chevron-left {
+  transform: translateX(-5px);
+}
+
+.control-chevron-right,
+.control-chevron-left {
+  transition: transform 0.3s ease;
+}
+
+.control-panel .click-box:focus-within {
+  border-color: black;
+}
+
+.slide-left {
+  -webkit-animation: slide-left 1s both;
+  animation: slide-left 1s both;
+}
+
+.slide-right {
+  -webkit-animation: slide-right 1s both;
+  animation: slide-right 1s both;
+
+}
+
+/* Animations */
+@keyframes slide-left {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

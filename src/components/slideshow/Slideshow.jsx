@@ -6,7 +6,7 @@ import { faCircle as regularCircle, faPlayCircle, faPauseCircle } from '@fortawe
 
 import slideshow1 from './imgs/sllideshow1.avif';
 import slideshow2 from './imgs/slideshow2.avif';
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const SlideShowText = ({ h2Text, h1Text, pText }) => {
   return (
@@ -20,9 +20,9 @@ const SlideShowText = ({ h2Text, h1Text, pText }) => {
   );
 };
 
-const SlideShow1 = () => {
+const SlideShow1 = ({ className }) => {
   return (
-    <div className='slide-show slide-show1'>
+    <div className={`slide-show slide-show1 ${className}`}>
       <img src={slideshow1} alt="" />
       <div className="slide-show-content">
         <SlideShowText h2Text={'Ultimate Game Sale'} h1Text={'Save up to 75% on Xbox and PC games'} pText={'Reach new realms with hot deals on selct titles. Hurry—Ultimate Game Sale ends 7/31.'} />
@@ -35,9 +35,10 @@ const SlideShow1 = () => {
   );
 };
 
-const SlideShow2 = () => {
+const SlideShow2 = ({ className }) => {
+
   return (
-    <div className='slide-show slide-show2'>
+    <div className={`slide-show slide-show2 ${className}`}>
       <img src={slideshow2} alt="" />
       <div className="slide-show-content">
         <SlideShowText h2Text={'Back to School'} h1Text={'Save $300 on select Surface Pro 9'} pText={'On campus and off, Surface Pro 9 with Windows 11 gives you the tablet flexibility you want, and the laptop performance and battery you need to stay ahead of class. Offer ends 7/23.'} />
@@ -49,21 +50,61 @@ const SlideShow2 = () => {
   );
 };
 
+
+
 const Slideshow = () => {
+  const [currentSlide, setCurrentSlide] = useState(true);
+  const [slideDirection, setSlideDirection] = useState('left');
+  const [sliding, setSliding] = useState(false);
+
+  const slideHandler = () => {
+    if (sliding) return;
+    setSliding(true);
+    setSlideDirection('right');
+    setCurrentSlide(!currentSlide);
+
+    setTimeout(() => {
+      setSliding(false);
+    }, 1000);
+  };
+
   return (
     <>
       <div className='slideshow-container'>
-        <SlideShow2 />
-        <div className='control-panel'>
-          <FontAwesomeIcon icon={faPauseCircle} className='play-pause' />
-          <FontAwesomeIcon icon={faChevronLeft} className='chevron' />
-          <FontAwesomeIcon icon={regularCircle} className='circle' />
-          <FontAwesomeIcon icon={regularCircle} className='circle' />
-          <FontAwesomeIcon icon={faChevronRight} className='chevron' />
+        <div className="showcase-container">
+          {
+            slideDirection === 'left'
+              ? currentSlide
+                ? <div className='slides-container'><SlideShow1 className='slide-left' /> <SlideShow2 className='slide-left' /></div>
+                : <div className='slides-container'><SlideShow2 className='slide-left' /><SlideShow1 className='slide-left' /></div>
+              : currentSlide
+                ? <div className='slides-container'><SlideShow2 className='slide-right' /><SlideShow1 className='slide-right' /></div>
+                : <div className='slides-container'><SlideShow1 className='slide-right' /><SlideShow2 className='slide-right' /></div>
+          }
         </div>
-      </div>
 
-
+        <div className='control-panel'>
+          <div className="play-pause-container click-box" tabIndex='-1' >
+            <FontAwesomeIcon icon={faPauseCircle} className='play-pause' />
+          </div>
+          <div className="chevron-container click-box" tabIndex='-1' onClick={slideHandler}>
+            <FontAwesomeIcon icon={faChevronLeft} className='control-chevron-left onClick' />
+          </div>
+          <div className="circle-container">
+            {currentSlide
+              ? <FontAwesomeIcon icon={regularCircle} className='circle' />
+              : <FontAwesomeIcon icon={solidCircle} className='circle' />}
+          </div>
+          <div className="circle-container">
+            {currentSlide
+              ? <FontAwesomeIcon icon={solidCircle} className='circle' />
+              : <FontAwesomeIcon icon={regularCircle} className='circle' />}
+          </div>
+          <div className="chevron-container click-box" tabIndex='-1' onClick={slideHandler}>
+            <FontAwesomeIcon icon={faChevronRight} className='control-chevron-right' />
+          </div>
+        </div>
+      </div >
     </>
 
   );

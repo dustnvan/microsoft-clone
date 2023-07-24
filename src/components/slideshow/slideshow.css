@@ -148,7 +148,11 @@
 .slide-right {
   -webkit-animation: slide-right 1s both;
   animation: slide-right 1s both;
+}
 
+.demo {
+  text-align: center;
+  font-weight: 700;
 }
 
 /* Animations */

@@ -54,57 +54,98 @@ const SlideShow2 = ({ className }) => {
 
 const Slideshow = () => {
   const [currentSlide, setCurrentSlide] = useState(true);
-  const [slideDirection, setSlideDirection] = useState('left');
+  const [dots, setDots] = useState(true);
+  const [slideDirection, setSlideDirection] = useState(null);
   const [sliding, setSliding] = useState(false);
+  const [playAnimation, setPlayAnimation] = useState(true);
+  const [duration, setDuration] = useState(0);
 
-  const slideHandler = () => {
+  const slideHandler = (slideDir) => {
     if (sliding) return;
     setSliding(true);
-    setSlideDirection('right');
-    setCurrentSlide(!currentSlide);
+    setSlideDirection(slideDir);
+    setCurrentSlide(prevSlide => !prevSlide);
+    setDots(prevDot => !prevDot);
 
     setTimeout(() => {
       setSliding(false);
     }, 1000);
   };
 
+  // Effect to handle the animation using setInterval
+  useEffect(() => {
+    let intervalId;
+
+    if (sliding) {
+      setDuration(0);
+    }
+
+    if (playAnimation) {
+      intervalId = setInterval(() => {
+        console.log(intervalId);
+        setDuration(prevDuration => prevDuration += 1);
+
+      }, 1000);
+
+      if (duration == 5) {
+        if (slideDirection === null) {
+          setSlideDirection('left');
+        }
+        else {
+          setCurrentSlide((prevCurrentSlide) => !prevCurrentSlide);
+        }
+        setDuration(0);
+        setDots(prevDot => !prevDot);
+      }
+    }
+
+    // Clean up the interval when the component unmounts or when playAnimation becomes false
+    return () => clearInterval(intervalId);
+  }, [playAnimation, sliding, duration]);
+
   return (
     <>
       <div className='slideshow-container'>
         <div className="showcase-container">
           {
-            slideDirection === 'left'
-              ? currentSlide
-                ? <div className='slides-container'><SlideShow1 className='slide-left' /> <SlideShow2 className='slide-left' /></div>
-                : <div className='slides-container'><SlideShow2 className='slide-left' /><SlideShow1 className='slide-left' /></div>
-              : currentSlide
-                ? <div className='slides-container'><SlideShow2 className='slide-right' /><SlideShow1 className='slide-right' /></div>
-                : <div className='slides-container'><SlideShow1 className='slide-right' /><SlideShow2 className='slide-right' /></div>
+            slideDirection === null
+              ? <SlideShow1 />
+              : slideDirection === 'left'
+                ? currentSlide
+                  ? <div className='slides-container'><SlideShow1 className={`slide-${slideDirection}`} /> <SlideShow2 className={`slide-${slideDirection}`} /></div>
+                  : <div className='slides-container'><SlideShow2 className={`slide-${slideDirection}`} /><SlideShow1 className={`slide-${slideDirection}`} /></div>
+                : currentSlide
+                  ? <div className='slides-container'><SlideShow2 className={`slide-${slideDirection}`} /><SlideShow1 className={`slide-${slideDirection}`} /></div>
+                  : <div className='slides-container'><SlideShow1 className={`slide-${slideDirection}`} /><SlideShow2 className={`slide-${slideDirection}`} /></div>
           }
         </div>
 
         <div className='control-panel'>
-          <div className="play-pause-container click-box" tabIndex='-1' >
-            <FontAwesomeIcon icon={faPauseCircle} className='play-pause' />
+          <div className="play-pause-container click-box" tabIndex='-1' onClick={() => setPlayAnimation(prevState => !prevState)}>
+            {playAnimation
+              ? <FontAwesomeIcon icon={faPauseCircle} className='play-pause' />
+              : <FontAwesomeIcon icon={faPlayCircle} className='play-pause' />}
           </div>
-          <div className="chevron-container click-box" tabIndex='-1' onClick={slideHandler}>
+          <div className="chevron-container click-box" tabIndex='-1' onClick={() => slideHandler('right')}>
             <FontAwesomeIcon icon={faChevronLeft} className='control-chevron-left onClick' />
           </div>
           <div className="circle-container">
-            {currentSlide
-              ? <FontAwesomeIcon icon={regularCircle} className='circle' />
-              : <FontAwesomeIcon icon={solidCircle} className='circle' />}
-          </div>
-          <div className="circle-container">
-            {currentSlide
+            {dots
               ? <FontAwesomeIcon icon={solidCircle} className='circle' />
               : <FontAwesomeIcon icon={regularCircle} className='circle' />}
           </div>
-          <div className="chevron-container click-box" tabIndex='-1' onClick={slideHandler}>
+          <div className="circle-container">
+            {dots
+              ? <FontAwesomeIcon icon={regularCircle} className='circle' />
+              : <FontAwesomeIcon icon={solidCircle} className='circle' />}
+          </div>
+          <div className="chevron-container click-box" tabIndex='-1' onClick={() => slideHandler('left')}>
             <FontAwesomeIcon icon={faChevronRight} className='control-chevron-right' />
           </div>
         </div>
       </div >
+
+      <div className='demo'>Demostration: {duration}</div>
     </>
 
   );

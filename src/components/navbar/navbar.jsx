@@ -66,8 +66,6 @@ const NavbarMobile = () => {
   );
 };
 
-
-// Main Component
 const Header = () => {
   const isMobile = useMediaQuery({ maxWidth: 860 });
 

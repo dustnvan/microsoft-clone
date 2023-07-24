@@ -15,21 +15,21 @@ const NavbarDesktop = () => {
       </a>
 
       <ul className="header_navbar_pages">
-        <li tabIndex='-1' className='nav-btn click-box'><a href="#" className='underline-hover' >Microsoft 365</a></li>
-        <li tabIndex='-1' className='nav-btn click-box'><a href="#" className='underline-hover'>Teams</a></li>
-        <li tabIndex='-1' className='nav-btn click-box'><a href="#" className='underline-hover'>Windows</a></li>
-        <li tabIndex='-1' className='nav-btn click-box'><a href="#" className='underline-hover'>Surface</a></li>
-        <li tabIndex='-1' className='nav-btn click-box xbox-btn'><a href="#" className='underline-hover'>Xbox</a></li>
-        <li tabIndex='-1' className='nav-btn click-box deals-btn'><a href="#" className='underline-hover'>Deals</a></li>
-        <li tabIndex='-1' className='nav-btn click-box business-btn'><a href="#" className='underline-hover '>Small Business</a></li>
-        <li tabIndex='-1' className='nav-btn click-box support-btn'><a href="#" className='underline-hover '>Support</a></li>
-        <li className='nav-btn click-box more-btn'><a href="#">More <FontAwesomeIcon icon={faChevronDown} /></a></li>
+        <li ><a href="#" tabIndex='-1' className='nav-btn click-box'><span className='underline-hover'>Microsoft 365</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box'><span className="underline-hover">Teams</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box'><span className="underline-hover">Windows</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box'><span className="underline-hover">Surface</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box xbox-btn'><span className="underline-hover">Xbox</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box deals-btn'><span className="underline-hover">Deals</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box business-btn'><span className="underline-hover">Small Business</span></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box support-btn'><span className="underline-hover">Support</span></a></li>
+        <li><a href="#" className='nav-btn click-box more-btn'><span className='underline-hover'>More </span><FontAwesomeIcon icon={faChevronDown} /></a></li>
       </ul>
 
       <ul className="header_navbar_user">
-        <li tabIndex='-1' className='nav-btn click-box microsoft-btn'><a href="#"><span className="underline-hover microsoft-text">All Microsoft</span><FontAwesomeIcon icon={faChevronDown} /></a></li>
-        <li tabIndex='-1' className='nav-btn click-box'><a href="#"><span className="underline-hover search-text">Search</span> <FontAwesomeIcon icon={faMagnifyingGlass} className='fa-flip-horizontal' /></a></li>
-        <li tabIndex='-1' className='nav-btn click-box cart-btn'><a href="#"><span className="underline-hover cart-text">Cart</span> <FontAwesomeIcon icon={faShoppingCart} /></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box microsoft-btn'><span className="underline-hover microsoft-text">All Microsoft</span><FontAwesomeIcon icon={faChevronDown} /></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box'><span className="underline-hover search-text">Search</span> <FontAwesomeIcon icon={faMagnifyingGlass} className='fa-flip-horizontal' /></a></li>
+        <li><a href="#" tabIndex='-1' className='nav-btn click-box cart-btn'><span className="underline-hover cart-text">Cart</span> <FontAwesomeIcon icon={faShoppingCart} /></a></li>
         <li tabIndex='-1' className='nav-btn click-box header_navbar_user_signin'>
           <a href="#">
             <span className="signin-text">Sign in</span> <img className='signin-icon' src={signinLogo} />

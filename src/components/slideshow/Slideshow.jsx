@@ -4,9 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faChevronLeft, faCircle as solidCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as regularCircle, faPlayCircle, faPauseCircle } from '@fortawesome/free-regular-svg-icons';
 
-import slideshow1 from './imgs/sllideshow1.avif';
-import slideshow2 from './imgs/slideshow2.avif';
+import largeSlideshow1 from './imgs/largeSlideShow1.jpg';
+import largeSlideshow2 from './imgs/largeSlideShow2.jpg';
+import mediumSlideshow1 from './imgs/mediumSlideShow1.jpg';
+import mediumSlideshow2 from './imgs/mediumSlideShow2.jpg';
+import smallSlideShow1 from './imgs/smallSlideShow1.jpg';
+import smallSlideShow2 from './imgs/smallSlideShow2.jpg';
+
 import { useState, useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const SlideShowText = ({ h2Text, h1Text, pText }) => {
   return (
@@ -20,10 +26,10 @@ const SlideShowText = ({ h2Text, h1Text, pText }) => {
   );
 };
 
-const SlideShow1 = ({ className }) => {
+const SlideShow1 = ({ className, image }) => {
   return (
     <div className={`slide-show slide-show1 ${className}`}>
-      <img src={slideshow1} alt="" />
+      <img src={image} alt="" />
       <div className="slide-show-content">
         <SlideShowText h2Text={'Ultimate Game Sale'} h1Text={'Save up to 75% on Xbox and PC games'} pText={'Reach new realms with hot deals on selct titles. Hurry—Ultimate Game Sale ends 7/31.'} />
         <div className="btns">
@@ -35,11 +41,11 @@ const SlideShow1 = ({ className }) => {
   );
 };
 
-const SlideShow2 = ({ className }) => {
+const SlideShow2 = ({ className, image }) => {
 
   return (
     <div className={`slide-show slide-show2 ${className}`}>
-      <img src={slideshow2} alt="" />
+      <img src={image} alt="" />
       <div className="slide-show-content">
         <SlideShowText h2Text={'Back to School'} h1Text={'Save $300 on select Surface Pro 9'} pText={'On campus and off, Surface Pro 9 with Windows 11 gives you the tablet flexibility you want, and the laptop performance and battery you need to stay ahead of class. Offer ends 7/23.'} />
         <div className="btns">
@@ -59,6 +65,26 @@ const Slideshow = () => {
   const [sliding, setSliding] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(true);
   const [duration, setDuration] = useState(0);
+
+  const mediumImage = useMediaQuery({ maxWidth: 1400 });
+  const smallImage = useMediaQuery({ maxWidth: 1100 });
+
+  let slide1Image = largeSlideshow1;
+  let slide2Image = largeSlideshow2;
+
+
+  if (mediumImage) {
+    slide1Image = mediumSlideshow1;
+    slide2Image = mediumSlideshow2;
+    console.log("med");
+
+  }
+  if (smallImage) {
+    slide1Image = smallSlideShow1;
+    slide2Image = smallSlideShow2;
+
+    console.log("small");
+  }
 
   const slideHandler = (slideDir) => {
     if (sliding) return;
@@ -82,18 +108,16 @@ const Slideshow = () => {
 
     if (playAnimation) {
       intervalId = setInterval(() => {
-        console.log(intervalId);
         setDuration(prevDuration => prevDuration += 1);
 
       }, 1000);
 
       if (duration == 5) {
-        if (slideDirection === null) {
-          setSlideDirection('left');
-        }
-        else {
+        if (slideDirection !== null) {
           setCurrentSlide((prevCurrentSlide) => !prevCurrentSlide);
         }
+
+        setSlideDirection('left');
         setDuration(0);
         setDots(prevDot => !prevDot);
       }
@@ -109,14 +133,14 @@ const Slideshow = () => {
         <div className="showcase-container">
           {
             slideDirection === null
-              ? <SlideShow1 />
+              ? <SlideShow1 image={slide1Image} />
               : slideDirection === 'left'
                 ? currentSlide
-                  ? <div className='slides-container'><SlideShow1 className={`slide-${slideDirection}`} /> <SlideShow2 className={`slide-${slideDirection}`} /></div>
-                  : <div className='slides-container'><SlideShow2 className={`slide-${slideDirection}`} /><SlideShow1 className={`slide-${slideDirection}`} /></div>
+                  ? <div className='slides-container'><SlideShow1 className={`slide-${slideDirection} slide-out`} image={slide1Image} /> <SlideShow2 className={`slide-${slideDirection} slide-in`} image={slide2Image} /></div>
+                  : <div className='slides-container'><SlideShow2 className={`slide-${slideDirection} slide-out`} image={slide2Image} /><SlideShow1 className={`slide-${slideDirection} slide-in`} image={slide1Image} /></div>
                 : currentSlide
-                  ? <div className='slides-container'><SlideShow2 className={`slide-${slideDirection}`} /><SlideShow1 className={`slide-${slideDirection}`} /></div>
-                  : <div className='slides-container'><SlideShow1 className={`slide-${slideDirection}`} /><SlideShow2 className={`slide-${slideDirection}`} /></div>
+                  ? <div className='slides-container'><SlideShow2 className={`slide-${slideDirection} slide-in`} image={slide2Image} /><SlideShow1 className={`slide-${slideDirection} slide-out`} image={slide1Image} /></div>
+                  : <div className='slides-container'><SlideShow1 className={`slide-${slideDirection} slide-in`} image={slide1Image} /><SlideShow2 className={`slide-${slideDirection} slide-out`} image={slide2Image} /></div>
           }
         </div>
 

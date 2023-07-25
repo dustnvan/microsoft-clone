@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/microsoft-clone/static/css/main.f04a993f.css",
+    "main.js": "/microsoft-clone/static/js/main.55f92b03.js",
+    "static/media/largeSlideShow1.jpg": "/microsoft-clone/static/media/largeSlideShow1.90ad44f62cbc71849b68.jpg",
+    "static/media/mediumSlideShow1.jpg": "/microsoft-clone/static/media/mediumSlideShow1.68e2a8ecf9c74f56b030.jpg",
+    "static/media/smallSlideShow1.jpg": "/microsoft-clone/static/media/smallSlideShow1.02780822e1b64322ea23.jpg",
+    "static/media/largeSlideShow2.jpg": "/microsoft-clone/static/media/largeSlideShow2.fd7b0d4964cec5816e38.jpg",
+    "static/media/mediumSlideShow2.jpg": "/microsoft-clone/static/media/mediumSlideShow2.e474a539df809fb7be9c.jpg",
+    "static/media/smallSlideShow2.jpg": "/microsoft-clone/static/media/smallSlideShow2.bdcbad6aff835c86e90d.jpg",
+    "index.html": "/microsoft-clone/index.html",
+    "static/media/signin-logo.svg": "/microsoft-clone/static/media/signin-logo.c82a9a70a4fed919e1d7ae227ccb1c06.svg",
+    "main.f04a993f.css.map": "/microsoft-clone/static/css/main.f04a993f.css.map",
+    "main.55f92b03.js.map": "/microsoft-clone/static/js/main.55f92b03.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f04a993f.css",
+    "static/js/main.55f92b03.js"
+  ]
+}

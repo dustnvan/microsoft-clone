@@ -110,7 +110,7 @@ const Slideshow = () => {
 
       }, 1000);
 
-      if (duration === 5) {
+      if (duration === 10) {
         if (slideDirection !== null) {
           slideHandler(slideDirection);
         }

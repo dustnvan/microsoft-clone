@@ -1,7 +1,7 @@
 import './slideshow.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft, faCircle as solidCircle, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronLeft, faCircle as solidCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCircle as regularCircle, faPlayCircle, faPauseCircle } from '@fortawesome/free-regular-svg-icons';
 
 import largeSlideshow1 from './imgs/largeSlideShow1.jpg';
@@ -17,11 +17,9 @@ import { useMediaQuery } from 'react-responsive';
 const SlideShowText = ({ h2Text, h1Text, pText }) => {
   return (
     <div className='text-wrapper'>
-      <div className="text-wrapper">
-        <h2>{h2Text}</h2>
-        <h1>{h1Text}</h1>
-        <p>{pText}</p>
-      </div>
+      <h2>{h2Text}</h2>
+      <h1>{h1Text}</h1>
+      <p>{pText}</p>
     </div >
   );
 };
@@ -112,9 +110,9 @@ const Slideshow = () => {
 
       }, 1000);
 
-      if (duration == 5) {
+      if (duration === 5) {
         if (slideDirection !== null) {
-          setCurrentSlide((prevCurrentSlide) => !prevCurrentSlide);
+          slideHandler(slideDirection);
         }
 
         setSlideDirection('left');
